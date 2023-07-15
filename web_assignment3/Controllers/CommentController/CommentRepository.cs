@@ -3,8 +3,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using web_assignment3.DatabaseContext;
+using web_assignment3.Model;
 
-namespace web_assignment3.Controllers.CommentRepository
+namespace web_assignment3.Controllers.CommentRepositoryNamespace
 {
     public class CommentRepository : ICommonInterface
     {
@@ -16,12 +17,9 @@ namespace web_assignment3.Controllers.CommentRepository
 
         
 
-        public Task<ActionResult> AddElement(object _object)
-        {
-            throw new NotImplementedException();
-        }
+        
 
-        public void DeleteElement(int id)
+        public Task<Object> DeleteElement(int id)
         {
             throw new NotImplementedException();
         }
@@ -30,15 +28,28 @@ namespace web_assignment3.Controllers.CommentRepository
         {
             return await dbContext.comments.ToListAsync();
         }
+        public async Task<IEnumerable<Object>> getAllCommentByProductId()
+        {
+            return await dbContext.comments.ToListAsync();
+        }
 
-        public Task<ActionResult> GetElementsById(int id)
+        public Task<Object> GetElementsById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ActionResult> UpdateElement(object _object)
+        public Task<Object> UpdateElement(int id,object _object)
         {
             throw new NotImplementedException();
+        }
+
+        public  object AddElement(object _comment)
+        {
+            Comment comment = _comment as Comment ;
+
+            dbContext.comments.Add(comment);
+            dbContext.SaveChanges();
+            return comment;
         }
     }
 }

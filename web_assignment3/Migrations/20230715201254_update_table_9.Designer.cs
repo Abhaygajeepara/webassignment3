@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using web_assignment3.DatabaseContext;
 
@@ -10,9 +11,11 @@ using web_assignment3.DatabaseContext;
 namespace web_assignment3.Migrations
 {
     [DbContext(typeof(MyDatabaseContext))]
-    partial class MyDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20230715201254_update_table_9")]
+    partial class update_table_9
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,9 +36,6 @@ namespace web_assignment3.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("productId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("quantity")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
