@@ -7,9 +7,9 @@ using web_assignment3.DatabaseContext;
     {
       MyDatabaseContext dbContext { get; set; }
     Task<IEnumerable<Object>> getAllElements();
-        Task<ActionResult> GetElementsById(int id);
-        Task<ActionResult> AddElement(Object _object);
-        Task<ActionResult> UpdateElement(Object _object);
-        void DeleteElement(int id);
+        Task<Object> GetElementsById(int id);
+        Object AddElement(Object _object);
+        Task<Object> UpdateElement(int id,Object _object);
+        Task<Object> DeleteElement(int id);
     }
 
