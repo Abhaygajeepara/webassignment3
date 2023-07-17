@@ -63,7 +63,7 @@ namespace web_assignment3.DatabaseContext
 
             modelBuilder.Entity<Cart>().HasKey(c => c.Id);
 
-r
+
             modelBuilder.Entity<OrderModel>()
                 .HasKey(ci => ci.OrderId);
             modelBuilder.Entity<OrderItem>()
