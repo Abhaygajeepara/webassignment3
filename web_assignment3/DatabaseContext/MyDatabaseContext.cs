@@ -11,6 +11,8 @@ namespace web_assignment3.DatabaseContext
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Cart> Cart { get; set; }
+        public DbSet<OrderModel> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
 
         public MyDatabaseContext(IConfiguration configuration)
         {
@@ -51,10 +53,7 @@ namespace web_assignment3.DatabaseContext
             modelBuilder.Entity<Comment>()
                 .HasKey(c => c.Id);
             
-            modelBuilder.Entity<Comment>()
-                .HasMany(c => c.Images)
-                .WithOne(ci => ci.Comment)
-                .HasForeignKey(ci => ci.CommentId);
+           
 
             modelBuilder.Entity<CommentImage>()
                 .HasKey(ci => ci.Id);
@@ -63,11 +62,20 @@ namespace web_assignment3.DatabaseContext
             // cart 
 
             modelBuilder.Entity<Cart>().HasKey(c => c.Id);
+
+            //order
+            modelBuilder.Entity<OrderModel>()
+                .HasKey(ci => ci.OrderId);
+            modelBuilder.Entity<OrderItem>()
+               .HasKey(ci => ci.OrderItemId);
+
             modelBuilder.Entity<Cart>().ToTable("Cart");
             modelBuilder.Entity<User>().ToTable("Users");
             modelBuilder.Entity<Product>().ToTable("Products");
             modelBuilder.Entity<Comment>().ToTable("Comments");
             modelBuilder.Entity<CommentImage>().ToTable("CommentImages");
+            modelBuilder.Entity<OrderModel>().ToTable("Orders");
+            modelBuilder.Entity<OrderItem>().ToTable("OrderItem");
         }
 
      
