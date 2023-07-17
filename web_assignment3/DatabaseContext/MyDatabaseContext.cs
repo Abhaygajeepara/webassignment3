@@ -53,10 +53,7 @@ namespace web_assignment3.DatabaseContext
             modelBuilder.Entity<Comment>()
                 .HasKey(c => c.Id);
             
-            modelBuilder.Entity<Comment>()
-                .HasMany(c => c.Images)
-                .WithOne(ci => ci.Comment)
-                .HasForeignKey(ci => ci.CommentId);
+           
 
             modelBuilder.Entity<CommentImage>()
                 .HasKey(ci => ci.Id);
@@ -66,13 +63,11 @@ namespace web_assignment3.DatabaseContext
 
             modelBuilder.Entity<Cart>().HasKey(c => c.Id);
 
-
-
+r
             modelBuilder.Entity<OrderModel>()
                 .HasKey(ci => ci.OrderId);
             modelBuilder.Entity<OrderItem>()
                .HasKey(ci => ci.OrderItemId);
-
 
 
             modelBuilder.Entity<Cart>().ToTable("Cart");
