@@ -20,6 +20,7 @@ namespace web_assignment3.Controllers.CartController
             CartInputModel cartInputModel = _object as CartInputModel;
             cartModel.UserId = cartInputModel.userId;
             cartModel.productId = cartInputModel.productId;
+            cartModel.quantity = cartInputModel.quantity;
             
             dbContext.Cart.Add(cartModel);
             dbContext.SaveChanges();

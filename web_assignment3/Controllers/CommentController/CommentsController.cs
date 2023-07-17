@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using web_assignment3.Controllers.CommentRepositoryNamespace;
 using web_assignment3.DatabaseContext;
 using web_assignment3.Model;
+using web_assignment3.Model.InputModel;
 
 namespace web_assignment3.Controllers.CommentController
 {
@@ -22,18 +23,18 @@ namespace web_assignment3.Controllers.CommentController
         }
         [HttpGet]
         [Route("getComments")]
-        public async Task<ActionResult> getCommentList()
+        public async Task<ActionResult> getCommentList(int productId)
         {
-            var result = commentRepository.getAllCommentByProductId();
+            var result = await commentRepository.getAllCommentByProductId(productId);
 
             return Ok(result);
         }
 
         [HttpPost]
         [Route("addComment")]
-        public async Task<ActionResult> addComment([FromForm] Comment _comment)
+        public async Task<ActionResult> addComment([FromForm] CommentInput commentInput)
         {
-            var result = commentRepository.AddElement(_comment);
+            var result =  commentRepository.AddElement(commentInput);
 
             return Ok(result);
         }

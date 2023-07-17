@@ -58,7 +58,8 @@ namespace web_assignment3.Controllers.UserController
                 if (userInputModel.password.Length > 0)
                     result.password = userInputModel.password;
                 if (userInputModel.shippingAddress.Length > 0)
-                    result.password = userInputModel.password;
+                    result.shippingAddress = userInputModel.shippingAddress;
+
                 await dbContext.SaveChangesAsync();
                 return result;
             }
