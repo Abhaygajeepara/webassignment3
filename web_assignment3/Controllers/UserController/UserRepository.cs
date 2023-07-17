@@ -7,8 +7,7 @@ namespace web_assignment3.Controllers.UserController
 {
     public class UserRepository : ICommonInterface
     {
-        
-
+       
         public MyDatabaseContext dbContext { get; set; }
 
         public UserRepository(MyDatabaseContext databaseContext)
